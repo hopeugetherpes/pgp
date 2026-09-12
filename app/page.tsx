@@ -2020,7 +2020,7 @@ export default function Home() {
             </p>
             <p className="footer-download" data-offline-download>
               <a
-                href="https://pgp.anatole.co/pgp.html"
+                href="https://pgp-offline.anatole.co/pgp.html"
                 download="PGP.html"
                 aria-label="Download PGP as a standalone offline HTML file"
               >
@@ -2028,7 +2028,7 @@ export default function Home() {
               </a>{" "}
               ·{" "}
               <a
-                href="https://pgp.anatole.co/pgp.html.sha256"
+                href="https://pgp-offline.anatole.co/pgp.html.sha256"
                 download="pgp.html.sha256"
                 aria-label="Download the SHA-256 checksum for the standalone PGP file"
               >

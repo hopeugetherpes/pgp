@@ -6,7 +6,7 @@ server after download.
 
 ## Download safely
 
-Download these release files from `https://pgp.anatole.co/`:
+Download these release files from `https://pgp-offline.anatole.co/`:
 
 - `pgp.html` — the standalone application
 - `pgp.html.sha256` — its SHA-256 checksum
