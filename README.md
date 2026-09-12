@@ -8,8 +8,7 @@
   <a href="https://pgp-offline.anatole.co"><strong>Open PGP</strong></a>
   ·
   <a href="dist/pgp.html"><strong>Download the standalone app</strong></a>
-  ·
-  <a href="OFFLINE.md"><strong>Offline verification guide</strong></a>
+  
 </p>
 
 # **Private OpenPGP, Without the Black Box**
