@@ -184,7 +184,6 @@ pnpm run build:vercel
 
 The verification step rejects missing deployment files, an invalid standalone checksum, external runtime resources, application network APIs, persistent browser-storage APIs, and obsolete Sites callbacks.
 
-See [OFFLINE.md](OFFLINE.md) for checksum verification, offline-use guidance, the threat model, and the optional maintainer-signing workflow.
 
 ## ▲ Deploy to Vercel
 
