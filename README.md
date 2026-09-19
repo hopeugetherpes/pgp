@@ -137,13 +137,15 @@ PGP is designed around auditable, browser-side controls:
 - **Protected Private Keys** — generated private keys are encrypted with the user-supplied passphrase
 - **Signature Verification** — supports embedded message/file signatures, cleartext signatures, and detached file signatures
 - **Ephemeral Handling** — keys, passphrases, messages, and file data are never intentionally persisted; clearing a form drops the application's references to those values
-- **No Persistent Storage** — no `localStorage`, IndexedDB, cookies, accounts, analytics, or telemetry
+- **No Application Storage** — the application code uses no `localStorage`, IndexedDB, cookies, accounts, analytics, or telemetry
 - **No Application Network Calls** — the deployed Content Security Policy sets `connect-src 'none'`
 - **Hardened Standalone Build** — `pgp.html` uses `default-src 'none'` and embeds its required interface, styles, and JavaScript
 - **Release Verification** — the build emits a SHA-256 checksum and a source-provenance record alongside the standalone file
 
 > [!NOTE]
 > “Nothing leaves your device” describes application data and cryptographic operations. The hosted page itself is still downloaded from the web. The standalone edition can be downloaded once, verified, and then used with the network disconnected.
+
+The hosting or CDN layer still receives ordinary HTTP connection metadata and may keep access logs or set operational cookies before the static page reaches the browser. That infrastructure is outside the JavaScript application's control. Use the verified standalone file with the network disconnected when this distinction matters to your threat model.
 
 > [!CAUTION]
 > JavaScript cannot guarantee forensic erasure of secrets from browser memory. After handling especially sensitive material, clear the fields, close the tab, and fully quit the browser. A compromised browser, extension, operating system, or device can still capture plaintext or key material.

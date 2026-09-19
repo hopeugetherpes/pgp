@@ -1991,7 +1991,7 @@ export default function Home() {
           <ShieldCheck aria-hidden="true" />
           <div>
             <strong>Your data never leaves this device</strong>
-            <span>All cryptographic operations run locally. No accounts, uploads, telemetry, or persistent storage.</span>
+            <span>All cryptographic operations run locally. No application accounts, uploads, telemetry, or persistent browser storage.</span>
           </div>
         </section>
 
