@@ -18,9 +18,10 @@ export default defineConfig({
     target: "es2022",
     cssCodeSplit: false,
     modulePreload: false,
+    chunkSizeWarningLimit: 1000,
     rollupOptions: {
       output: {
-        inlineDynamicImports: true,
+        codeSplitting: false,
         entryFileNames: "assets/pgp.js",
         assetFileNames: (assetInfo) =>
           assetInfo.names?.some((name) => name.endsWith(".css"))

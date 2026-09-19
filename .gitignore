@@ -20,7 +20,18 @@
 
 # misc
 .DS_Store
+Thumbs.db
 *.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+credentials*.json
+secrets*.json
+service-account*.json
+id_rsa
+id_ed25519
 
 # debug
 npm-debug.log*
@@ -30,6 +41,7 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+*.env
 
 # vercel
 .vercel

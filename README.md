@@ -136,7 +136,7 @@ PGP is designed around auditable, browser-side controls:
 - **Public-Key Encryption** — encryption requires the recipient's public key; private keys are reserved for decryption and signing
 - **Protected Private Keys** — generated private keys are encrypted with the user-supplied passphrase
 - **Signature Verification** — supports embedded message/file signatures, cleartext signatures, and detached file signatures
-- **Ephemeral Handling** — keys, passphrases, messages, and file data remain in the current tab's memory until cleared or the tab closes
+- **Ephemeral Handling** — keys, passphrases, messages, and file data are never intentionally persisted; clearing a form drops the application's references to those values
 - **No Persistent Storage** — no `localStorage`, IndexedDB, cookies, accounts, analytics, or telemetry
 - **No Application Network Calls** — the deployed Content Security Policy sets `connect-src 'none'`
 - **Hardened Standalone Build** — `pgp.html` uses `default-src 'none'` and embeds its required interface, styles, and JavaScript
@@ -144,6 +144,9 @@ PGP is designed around auditable, browser-side controls:
 
 > [!NOTE]
 > “Nothing leaves your device” describes application data and cryptographic operations. The hosted page itself is still downloaded from the web. The standalone edition can be downloaded once, verified, and then used with the network disconnected.
+
+> [!CAUTION]
+> JavaScript cannot guarantee forensic erasure of secrets from browser memory. After handling especially sensitive material, clear the fields, close the tab, and fully quit the browser. A compromised browser, extension, operating system, or device can still capture plaintext or key material.
 
 ## Development
 
@@ -157,6 +160,7 @@ PGP is designed around auditable, browser-side controls:
 ```bash
 git clone https://github.com/hopeugetherpes/pgp.git
 cd pgp
+corepack enable
 pnpm install --frozen-lockfile
 pnpm dev
 ```
@@ -179,10 +183,14 @@ The production build is a static site written to `dist/`. It also creates the po
 To run the same build and output checks used by Vercel:
 
 ```bash
+pnpm run check
 pnpm run build:vercel
+pnpm audit --audit-level=low
 ```
 
-The verification step rejects missing deployment files, an invalid standalone checksum, external runtime resources, application network APIs, persistent browser-storage APIs, and obsolete Sites callbacks.
+The verification step rejects missing deployment files, an invalid standalone checksum, external runtime resources, application network APIs, persistent browser-storage APIs, obsolete platform callbacks, weakened security headers, and an invalid Vercel deploy-button target.
+
+The production application is a static Vite build. The repository intentionally contains no server route, authentication layer, database adapter, analytics SDK, or cloud-runtime binding.
 
 
 ## ▲ Deploy to Vercel

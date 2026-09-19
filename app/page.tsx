@@ -101,8 +101,23 @@ function safeFileStem(value: string) {
 }
 
 function safeOutputFilename(value: string, fallback: string) {
-  const cleaned = value.replaceAll("\\", "/").split("/").pop()?.trim()
-  return cleaned && cleaned !== "." && cleaned !== ".." ? cleaned : fallback
+  const leaf = value
+    .normalize("NFKC")
+    .replaceAll("\\", "/")
+    .split("/")
+    .pop()
+    ?.replace(/[\u0000-\u001F\u007F]/g, "")
+    .replace(/[<>:\"|?*]/g, "_")
+    .replace(/[. ]+$/g, "")
+    .trim()
+
+  if (!leaf || leaf === "." || leaf === "..") return fallback
+
+  const shortened = leaf.slice(0, 180)
+  const windowsStem = shortened.split(".", 1)[0].toUpperCase()
+  return /^(?:CON|PRN|AUX|NUL|COM[1-9]|LPT[1-9])$/.test(windowsStem)
+    ? `_${shortened}`
+    : shortened
 }
 
 function encryptedFilename(filename: string) {
@@ -594,6 +609,7 @@ function GenerateWorkspace() {
         fingerprint: publicKeyObject.getFingerprint().toUpperCase().match(/.{1,4}/g)?.join(" ") ?? "",
         fileStem: safeFileStem(email),
       })
+      setPassphrase("")
       toast.success("PGP key pair generated entirely in this browser")
     } catch (error) {
       toast.error(`Key generation failed: ${errorMessage(error)}`)

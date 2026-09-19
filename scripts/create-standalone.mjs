@@ -55,6 +55,9 @@ const offlinePolicy = [
   "object-src 'none'",
   "base-uri 'none'",
   "form-action 'none'",
+  "frame-src 'none'",
+  "frame-ancestors 'none'",
+  "manifest-src 'none'",
 ].join("; ")
 
 function escapeAttribute(value) {
