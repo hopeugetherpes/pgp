@@ -204,7 +204,6 @@ PGP is configured for automatic deployment from GitHub:
 1. In Vercel, choose **Add New → Project**
 2. Import `https://github.com/hopeugetherpes/pgp`
 3. Click **Deploy** without adding environment variables or changing the detected settings
-4. Add `pgp-offline.anatole.co` under the project's **Domains** settings
 
 The committed `vercel.json` selects the locked pnpm installation, verified static build, `dist/` output directory, and security headers. No server function, API, database, secret, or external runtime service is required.
 
