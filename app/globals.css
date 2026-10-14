@@ -2,6 +2,8 @@
 @import "tw-animate-css";
 @import "../vendor/shadcn-tailwind-4.13.0.css";
 
+@source not "../dist";
+
 :root {
   --background: oklch(1 0 0);
   --foreground: oklch(0.18 0.015 264);
