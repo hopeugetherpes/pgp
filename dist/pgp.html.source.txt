@@ -1,6 +1,6 @@
 PGP standalone release provenance
 
 Artifact: pgp.html
-SHA-256: 94b48b77e8d2d1fa22ef028bf57a26c2b972dc7ea6a2cb629d05e037d113ad98
-Source commit: b23d191f4354afa6a1ccde30e6e54d10fbc50f0d
-Source: https://github.com/hopeugetherpes/pgp/commit/b23d191f4354afa6a1ccde30e6e54d10fbc50f0d
+SHA-256: 565dffda1dbed313d3dfd60a67399a0d9939960c1bb6053fdaddedb47ad07b84
+Source commit: 59d8b7d5093f606a3fa6168c6982943355295ed4
+Source: https://github.com/hopeugetherpes/pgp/commit/59d8b7d5093f606a3fa6168c6982943355295ed4
